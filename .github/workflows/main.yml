@@ -13,19 +13,22 @@ jobs:
       - name: Clonar el repositorio
         uses: actions/checkout@v4
 
+      - name: Listar directorio de trabajo (antes de npm install)
+        run: ls -al ${{ github.workspace }}
+
       - name: Instalar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
       - name: Instalar dependencias
-        working-directory: /home/runner/work/Prueba
+        working-directory: ${{ github.workspace }}
         run: npm install
 
       - name: Ejecutar pruebas con Jest
-        working-directory: /home/runner/work/Prueba
+        working-directory: ${{ github.workspace }}
         run: npm test
 
       - name: Ejecutar script Hola Mundo
-        working-directory: /home/runner/work/Prueba
+        working-directory: ${{ github.workspace }}
         run: node index.js
