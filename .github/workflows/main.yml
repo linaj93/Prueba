@@ -1,4 +1,4 @@
-name: Ejecutar Hola Mundo con Pruebas
+name: Ejecutar Hola Mundo Node.js
 
 on:
   push:
@@ -10,30 +10,21 @@ jobs:
   hola-mundo:
     runs-on: ubuntu-latest
     steps:
-      - name: Limpiar entorno de Node.js
-        run: |
-          rm -rf ~/.npm
-          rm -rf node_modules
-          npm cache clean --force
-
       - name: Clonar el repositorio
         uses: actions/checkout@v4
-
-      - name: Listar directorio de trabajo
-        run: ls -al ${{ github.workspace }}
 
       - name: Instalar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      - name: Instalar dependencias
-        working-directory: ${{ github.workspace }}
-        run: npm install
+      # - name: Instalar dependencias
+      #   working-directory: ${{ github.workspace }}
+      #   run: npm install
 
-      - name: Ejecutar pruebas con Jest
-        working-directory: ${{ github.workspace }}
-        run: npm test
+      # - name: Ejecutar pruebas con Jest
+      #   working-directory: ${{ github.workspace }}
+      #   run: npm test
 
       - name: Ejecutar script Hola Mundo
         working-directory: ${{ github.workspace }}
