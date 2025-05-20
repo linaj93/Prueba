@@ -18,14 +18,6 @@ jobs:
         with:
           node-version: '18'
 
-      # - name: Instalar dependencias
-      #   working-directory: ${{ github.workspace }}
-      #   run: npm install
-
-      # - name: Ejecutar pruebas con Jest
-      #   working-directory: ${{ github.workspace }}
-      #   run: npm test
-
       - name: Ejecutar script Hola Mundo
         working-directory: ${{ github.workspace }}
         run: node index.js
