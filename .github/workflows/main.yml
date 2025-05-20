@@ -10,10 +10,16 @@ jobs:
   hola-mundo:
     runs-on: ubuntu-latest
     steps:
+      - name: Limpiar entorno de Node.js
+        run: |
+          rm -rf ~/.npm
+          rm -rf node_modules
+          npm cache clean --force
+
       - name: Clonar el repositorio
         uses: actions/checkout@v4
 
-      - name: Listar directorio de trabajo (antes de npm install)
+      - name: Listar directorio de trabajo
         run: ls -al ${{ github.workspace }}
 
       - name: Instalar Node.js
