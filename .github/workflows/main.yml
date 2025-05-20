@@ -1,4 +1,4 @@
-name: Ejecutar Hola Mundo Node.js
+name: Ejecutar Hola Mundo con Pruebas
 
 on:
   push:
@@ -7,26 +7,28 @@ on:
     branches: [ master ]
 
 jobs:
-  run-node:
+  hola-mundo:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Clonar el repositorio
-      uses: actions/checkout@v4
+      - name: Clonar el repositorio
+        uses: actions/checkout@v4
 
-    - name: Instalar Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+      - name: Listar directorio de trabajo
+        run: ls -al ${{ github.workspace }}
 
-    - name: Instalar dependencias
-      working-directory: /home/runner/work/Prueba
-      run: npm install
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
 
-    - name: Ejecutar pruebas con Jest
-      working-directory: /home/runner/work/Prueba
-      run: npm test
+      - name: Instalar dependencias
+        working-directory: ${{ github.workspace }}
+        run: npm install
 
-    - name: Ejecutar script Hola Mundo
-      working-directory: /home/runner/work/Prueba
-      run: node index.js
+      - name: Ejecutar pruebas con Jest
+        working-directory: ${{ github.workspace }}
+        run: npm test
+
+      - name: Ejecutar script Hola Mundo
+        working-directory: ${{ github.workspace }}
+        run: node index.js
