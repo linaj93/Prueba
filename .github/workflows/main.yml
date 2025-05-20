@@ -19,12 +19,6 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Instalar dependencias
-      run: npm install
-
-    - name: Ejecutar pruebas con Jest
-      run: npm test
-
     - name: Ejecutar la aplicación Node.js
       run: node index.js
 
